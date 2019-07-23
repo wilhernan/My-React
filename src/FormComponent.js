@@ -109,26 +109,9 @@ Remove = (i) => {
       datas: datas
     });
 
-    this.refs.myForm.value = '';
+    this.refs.myForm.reset();
     this.refs.name.focus();
 }
-
-Edit = (i) => {
-    let data = this.state.datas[i];
-    this.refs.name.value = data.name;
-    this.refs.lastname.value = data.lastname;
-    this.refs.username.value = data.username;
-    this.refs.languaje.value = data.languaje;
-    this.refs.gender.value = data.gender;
-    this.refs.about.value = data.about;
-
-    this.setState({
-      act: 1,
-      index: i
-    });
-
-    this.refs.name.focus();
-}                                
 
 
 render() {
@@ -217,16 +200,12 @@ render() {
                             <Grid.Column textAlign = "left" width={12}>
                                 {data.name} , {data.lastname} , {data.username} , {data.languaje} , {data.gender} , {data.about}
                                 <button onClick={()=>this.Remove(i)} className="myGridButton">Remove </button>
-                                <button onClick={()=>this.Edit(i)} className="myGridButton">Edit </button>
                             </Grid.Column>             
                         </Grid.Row>
                     </Grid>
                 )}                                    
                 </pre>                
-            </form>            
-            <div>
-                <span>{JSON.stringify(this.state)}</span>
-            </div>
+            </form>
         </div>        
     ) 
 }
